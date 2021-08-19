@@ -19,10 +19,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path("agent/", include("agent.urls")),
-    path("donor/", include("donor.urls")),
-    path("users/", include("users.urls")),
     path("admin/", admin.site.urls),
+    path("api/agent/", include("agent.urls")),
+    path("donor/", include("donor.urls")),
+    path("api/users/", include("users.urls")),
 ]
 
 

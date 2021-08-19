@@ -1,6 +1,5 @@
 import { toast } from "react-toastify";
 import { authService } from "../../service/auth.service";
-import jwtDecode from "jwt-decode";
 
 export const signUp = (user) => {
   return (dispatch) => {
@@ -27,7 +26,7 @@ export const signIn = (email, password) => {
       .login(email, password)
       .then((res) => {
         localStorage.setItem("user", JSON.stringify(res.data));
-        toast("bisa", {
+        toast.success("Bisa", {
           position: toast.POSITION.BOTTOM_RIGHT,
         });
         dispatch({
@@ -46,11 +45,12 @@ export const signIn = (email, password) => {
   };
 };
 
-export const signOut = () => {
+export const signOut = (history) => {
   authService.logout();
   return (dispatch) => {
     dispatch({
       type: "SIGN_OUT",
     });
+    history.push("/");
   };
 };

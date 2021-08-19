@@ -36,7 +36,7 @@ class AuthUserApiView(GenericAPIView):
 
     def get(self, request):
         user = request.user
-        serializer = RegisterSerializer(user)
+        serializer = UserDetailSerializer(user)
         return response.Response({"user": serializer.data})
 
 

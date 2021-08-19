@@ -8,4 +8,5 @@ urlpatterns = [
     path("user", views.AuthUserApiView.as_view(), name="user"),
     path("", views.UsersListApiView.as_view(), name="userlist"),
     path("<int:id>", views.UserDetailAPIView.as_view(), name="user-detail"),
+    path("getUser", views.AuthUserApiView.as_view(), name="getuser"),
 ]

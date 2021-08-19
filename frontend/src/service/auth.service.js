@@ -1,5 +1,5 @@
 import axios from "axios";
-import { urlApi } from "../helpers/config";
+// import { urlApi } from "../helpers/config";
 
 export const authService = {
   login,
@@ -7,14 +7,16 @@ export const authService = {
   logout,
 };
 
+const urlApi = "http://localhost:8000";
+
 function register(user) {
-  return axios.post(`${urlApi}/users/register`, user);
+  return axios.post(`${urlApi}/api/users/register`, user);
 }
 
 function login(email, password) {
-  return axios.post(`${urlApi}/users/login`, { email, password });
+  return axios.post(`${urlApi}/api/users/login`, { email, password });
 }
 
 function logout() {
-  localStorage.removeItem("token");
+  localStorage.removeItem("user");
 }
