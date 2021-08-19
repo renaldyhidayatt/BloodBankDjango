@@ -1,5 +1,5 @@
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useCallback, useEffect, useState } from "react";
 import { UserService } from "../../service/users.service";
 import { signOut } from "../../redux/action/auth.action";
@@ -7,6 +7,7 @@ import { signOut } from "../../redux/action/auth.action";
 const Navbar = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const user = useSelector((state) => state.auth.user);
 
   const initialState = {
     first_name: "",
@@ -23,13 +24,17 @@ const Navbar = () => {
   const [profile, setProfile] = useState(initialState);
 
   useEffect(() => {
-    UserService.UserByToken()
-      .then((res) => {
-        console.log(res.data.user);
-        setProfile(res.data.user);
-        console.log(profile);
-      })
-      .catch((err) => console.log(err));
+    if (user) {
+      UserService.UserByToken()
+        .then((res) => {
+          console.log(res.data.user);
+          setProfile(res.data.user);
+          console.log(profile);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      history.push("/");
+    }
   }, []);
 
   return (
