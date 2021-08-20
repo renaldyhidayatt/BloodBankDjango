@@ -45,12 +45,16 @@ export const signIn = (email, password) => {
   };
 };
 
-export const signOut = (history) => {
+export const signOut = (history = null) => {
   authService.logout();
   return (dispatch) => {
     dispatch({
       type: "SIGN_OUT",
     });
-    history.push("/");
+    if (history === null) {
+      console.log("Beara");
+    } else {
+      history.push("/");
+    }
   };
 };
