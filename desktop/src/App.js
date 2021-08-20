@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import "./App.css";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import RouteLayoutAdmin from "./pages/admin";
+import RouteLayoutHome from "./pages/home";
+import IsAuth from "./guard/IsAuth";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Switch>
+          <Route
+            path="/admin"
+            render={(props) => <RouteLayoutAdmin {...props} />}
+          />
+          <Route path="/" render={(props) => <RouteLayoutHome {...props} />} />
+        </Switch>
+      </BrowserRouter>
+      <ToastContainer />
+    </>
   );
 }
 
