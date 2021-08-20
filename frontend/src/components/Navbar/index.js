@@ -50,7 +50,7 @@ const Navbar = () => {
                     aria-labelledby="navbarDropdown"
                     id="dropdown"
                   >
-                    <Link className="dropdown-item" to="/dashboard">
+                    <Link className="dropdown-item" to="/admin/dashboard">
                       Dashboard
                     </Link>
                     <Link onClick={logout} to="/" className="dropdown-item">

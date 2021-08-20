@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import RouteLayoutAdmin from "./pages/admin";
 import RouteLayoutHome from "./pages/home";
+import IsAuth from "./guard/IsAuth";
 
 function App() {
   return (
