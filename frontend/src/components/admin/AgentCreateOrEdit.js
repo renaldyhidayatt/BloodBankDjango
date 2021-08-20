@@ -1,7 +1,3 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { AgentDetail } from "../../redux/action/agent.action";
-
 const AgentCreateOrEdit = (props) => {
   const Create = props.Create;
 

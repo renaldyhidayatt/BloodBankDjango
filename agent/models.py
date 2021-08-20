@@ -26,8 +26,8 @@ class Agent(TrackingModel):
 
 
 class Religion(TrackingModel):
-    name = models.CharField(max_length=255, null=False)
-
+    name = models.CharField(max_length=255, null=False, unique=False)
+    ## Lanjut lagi
     class Meta:
         ordering = ("name",)
 

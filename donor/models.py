@@ -18,8 +18,10 @@ class Donor(TrackingModel):
     description = models.TextField(null=False)
     profession = models.TextField(null=False)
     education = models.TextField(null=False)
-    religion = models.OneToOneField(Religion, on_delete=models.CASCADE)
-    categoryblood = models.OneToOneField(CategoryBlood, on_delete=models.CASCADE)
+    religion = models.ForeignKey(Religion, on_delete=models.CASCADE, unique=False)
+    categoryblood = models.ForeignKey(
+        CategoryBlood, on_delete=models.CASCADE, unique=False
+    )
     city = models.CharField(max_length=20, null=False)
     country = models.CharField(max_length=20, null=False)
     state = models.CharField(max_length=20, null=False)
